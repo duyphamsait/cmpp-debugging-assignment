@@ -13,7 +13,7 @@ class Order:
             return "Empty Order"
         return total
 
-    def add_item(self, item_name, quantity, price)
+    def add_item(self, item_name, quantity, price):
         self.items.append((item_name, quantity, price))  
 
     def remove_item(self, item_name):
@@ -23,9 +23,9 @@ class Order:
 
     def print_summary(self):
         print("Order Summary for", self.customer_name)
-        for item in self.itemz: 
+        for item in self.items: 
             print(f"{item[1]} x {item[0]} @ ${item[2]:.2f}")
-        print("Total: $", self.calculate_total()
+        print("Total: $", self.calculate_total())
 
     def apply_discount(self, code): 
         if code == "SAVE10":
