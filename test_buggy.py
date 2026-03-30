@@ -126,6 +126,22 @@ class TestOrder(unittest.TestCase):
         # Assert: expected discount = 0.2 (20%)
         self.assertEqual(discount, 0.2)
 
+    def test_order_workflow(self):
+        # Arrange: create order with multiple items
+        order = Order("Duy Pham", [
+            ("iPhone", 1, 1000.0),
+            ("iPad", 2, 500.0)
+        ])
+
+        # Act: remove item, apply discount, and calculate final total
+        order.remove_item("iPad")
+        discount = order.apply_discount("SAVE10")
+        total = order.calculate_total()
+        final_total = total * (1 - discount)
+
+        # Assert: expected final total = 1000 * 0.9 = 900
+        self.assertEqual(final_total, 900.0)
+
 
 if __name__ == "__main__":
     unittest.main()
